@@ -4,6 +4,7 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>automailpro</groupId>
     <artifactId>auto-email-backend</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -49,14 +50,14 @@
             <version>1.4</version>
         </dependency>
 
-        <!-- PDFBox for PDF text extraction -->
+        <!-- PDFBox -->
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>2.0.27</version>
         </dependency>
 
-        <!-- Apache POI for DOCX extraction -->
+        <!-- Apache POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -69,12 +70,12 @@
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.16</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-            <!-- ensure Java 17 -->
+
+            <!-- Java 17 compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -84,6 +85,23 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
+            <!-- Executable JAR banवण्यासाठी -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 🔴 इथे तुझी actual main class दे -->
+                            <mainClass>automailpro.MainApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
 </project>
