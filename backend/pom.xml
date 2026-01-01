@@ -95,4 +95,10 @@
                             <mainClass>automailpro.AutoMailProServer</mainClass>
                         </manifest>
                     </archive>
-                </c
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
