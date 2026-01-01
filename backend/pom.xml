@@ -8,19 +8,17 @@
     <groupId>automailpro</groupId>
     <artifactId>auto-email-backend</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
+    <!-- Java version -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- Dependencies -->
     <dependencies>
-        <!-- Gson -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.10.1</version>
-        </dependency>
 
         <!-- Spark Java -->
         <dependency>
@@ -29,11 +27,11 @@
             <version>2.9.4</version>
         </dependency>
 
-        <!-- Ollama4j -->
+        <!-- Gson -->
         <dependency>
-            <groupId>io.github.ollama4j</groupId>
-            <artifactId>ollama4j</artifactId>
-            <version>1.1.5</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
 
         <!-- SQLite JDBC -->
@@ -43,7 +41,7 @@
             <version>3.45.1.0</version>
         </dependency>
 
-        <!-- File upload & extraction -->
+        <!-- File upload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -64,18 +62,20 @@
             <version>5.2.3</version>
         </dependency>
 
-        <!-- SLF4J -->
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.16</version>
         </dependency>
+
     </dependencies>
 
+    <!-- Build -->
     <build>
         <plugins>
 
-            <!-- Java 17 compiler -->
+            <!-- Java 17 Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -86,7 +86,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Executable JAR banवण्यासाठी -->
+            <!-- Executable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -94,8 +94,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <!-- 🔴 इथे तुझी actual main class दे -->
-                            <mainClass>automailpro.MainApp</mainClass>
+                            <!-- 🔴 IMPORTANT: इथे तुझी actual main class दे -->
+                            <mainClass>CHANGE_ME_MAIN_CLASS</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
