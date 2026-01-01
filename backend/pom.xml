@@ -10,14 +10,21 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <!-- Java version -->
+    <!-- Java 17 -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Dependencies -->
+    <!-- REQUIRED for Ollama -->
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
 
         <!-- Spark Java -->
@@ -39,6 +46,13 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.45.1.0</version>
+        </dependency>
+
+        <!-- Ollama (WORKING with JitPack) -->
+        <dependency>
+            <groupId>com.github.ollama4j</groupId>
+            <artifactId>ollama4j</artifactId>
+            <version>1.1.5</version>
         </dependency>
 
         <!-- File upload -->
@@ -71,11 +85,10 @@
 
     </dependencies>
 
-    <!-- Build -->
     <build>
         <plugins>
 
-            <!-- Java 17 Compiler -->
+            <!-- Java 17 compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -94,8 +107,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <!-- 🔴 IMPORTANT: इथे तुझी actual main class दे -->
-                            <mainClass>CHANGE_ME_MAIN_CLASS</mainClass>
+                            <!-- 🔴 IMPORTANT: EXACT main class -->
+                            <mainClass>automailpro.AutoMailProServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
