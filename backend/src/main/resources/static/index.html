@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AutoMailPro — Smart Email Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<div class="topbar">
+    <div class="left">
+        <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+    </div>
+    <div class="center">AutoMailPro</div>
+    <div class="right">
+        <select id="languageSelect" onchange="onLanguageChange()">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Marathi</option>
+        </select>
+    </div>
+</div>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar glass">
+        <div class="logo-area">
+            <img src="logo.png" class="logo" alt="logo" />
+            <div class="brand">
+                <div class="brand-title">AutoMailPro</div>
+                <div class="brand-sub">Smart email assistant</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <select id="templateSelect" class="input"></select>
+            <input id="historySearch" class="input" placeholder="Search history..." oninput="filterHistory()" />
+
+            <div class="side-buttons">
+                <button class="muted btn-sm" onclick="clearAllConfirm()">Clear</button>
+                <button class="muted btn-sm" onclick="loadHistory()">Refresh</button>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h4>⭐ Favorites</h4>
+            <div id="favList" class="history-list"></div>
+
+            <h4>📜 All History</h4>
+            <div id="historyList" class="history-list"></div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+        <header class="main-header">
+            <h2>Create a Professional Email</h2>
+            <p class="sub">Fill details and click Generate.</p>
+        </header>
+
+        <!-- FORM CARD -->
+        <section class="card glass">
+            <div class="form-grid">
+
+                <div class="field">
+                    <label>Purpose</label>
+                    <input id="purpose" class="input" placeholder="Ex: Request for bonafide" />
+                </div>
+
+                <div class="field">
+                    <label>Tone</label>
+                    <select id="tone" class="input">
+                        <option>Formal</option>
+                        <option>Friendly</option>
+                        <option>Professional</option>
+                        <option>Casual</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Receiver</label>
+                    <input id="receiver" class="input" placeholder="Ex: Principal, HR, Manager" />
+                </div>
+
+                <div class="field full">
+                    <label>Key Points</label>
+                    <textarea id="points" class="input" rows="4" placeholder="Write bullet points..."></textarea>
+                </div>
+
+                <div class="field">
+                    <label>Upload File</label>
+                    <input id="fileInput" class="input" type="file" accept=".pdf,.doc,.docx" />
+                    <button class="btn-sm" onclick="uploadFile()">Upload & Extract</button>
+                </div>
+
+                <div class="field">
+                    <label>Voice Input</label>
+                    <div class="voice-row">
+                        <button id="micBtn" class="btn-sm" onclick="startStopSpeech()">🎤 Start</button>
+                        <button class="btn-sm" onclick="pasteSpeechToPoints()">Paste</button>
+                    </div>
+                    <textarea id="speechText" class="input" rows="3" placeholder="Speech transcript..."></textarea>
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <button id="generateBtn" onclick="generateEmail()">Generate Email</button>
+            </div>
+        </section>
+
+        <!-- RESULT CARD -->
+        <section class="card glass">
+            <div class="result-head">
+                <h3>Generated Email</h3>
+                <div class="result-actions">
+                    <button class="btn-sm" onclick="copyResult()">Copy</button>
+                    <button class="btn-sm" onclick="downloadResult()">Download</button>
+                </div>
+            </div>
+            <pre id="resultBox" class="result-box">Your generated email will appear here...</pre>
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
